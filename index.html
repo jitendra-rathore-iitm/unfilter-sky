@@ -60,7 +60,7 @@
     const apiKey = "f91184191a2a1f61ada2c10665d693e5";
     const apiURL =
       "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
-    const aqiURL = "http://api.openweathermap.org/data/2.5/air_pollution?";
+    const aqiURL = "https://api.openweathermap.org/data/2.5/air_pollution?";
 
     const searchBox = document.querySelector(".search input");
     const searchBtn = document.querySelector(".search button");
@@ -116,7 +116,7 @@
       const data = await response.json();
       const aqi = data.list[0].main.aqi;
       const aqiLabel = ["", "Good", "Fair", "Moderate", "Poor", "Very Poor"];
-      document.querySelector(".aqi").innerHTML = `${aqi} + (${aqiLabel[aqi]})`;
+      document.querySelector(".aqi").innerHTML = `${aqi} (${aqiLabel[aqi]})`;
     }
 
     searchBtn.addEventListener("click", () => {
