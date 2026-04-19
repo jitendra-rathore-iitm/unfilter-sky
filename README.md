@@ -12,7 +12,8 @@ Use `git clone https://github.com/jitendra-rathore-iitm/unfiltered-sky.git` to i
 ```bash
 .
 ├── images # Images which are required
-│   ├── button.png 
+│   ├── aqi.png
+│   ├── button.png
 │   ├── clouds.png
 │   ├── drizzle.png
 │   ├── humidity.png
@@ -21,7 +22,8 @@ Use `git clone https://github.com/jitendra-rathore-iitm/unfiltered-sky.git` to i
 │   ├── snow.png
 │   ├── sun.png
 │   └── wind.png
-├── index.html # Html and javascript used here
-├── README.md 
+├── index.html  # Html and javascript used here
+├── README.md
 └── style.css # for styling 
+
 ```
