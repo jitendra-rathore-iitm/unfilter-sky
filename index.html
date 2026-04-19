@@ -115,7 +115,7 @@
       );
       const data = await response.json();
       const aqi = data.list[0].main.aqi;
-      const aqiLabel = ["Good", "Fair", "Moderate", "Poor", "Very Poor"];
+      const aqiLabel = ["", "Good", "Fair", "Moderate", "Poor", "Very Poor"];
       document.querySelector(".aqi").innerHTML = `${aqi} + (${aqiLabel[aqi]})`;
     }
 
