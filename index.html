@@ -24,6 +24,14 @@
         <div class="type">Clear</div>
         <div class="details">
           <div class="col">
+            <img src="images/aqi.png" />
+            <div>
+              <p class="aqi">15</p>
+              <p>AQI</p>
+            </div>
+          </div>
+
+          <div class="col">
             <img src="images/humidity.png" />
             <div>
               <p class="humidity">50%</p>
@@ -41,12 +49,18 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class="end">
+        <p>Made with ❤️ by Jitendra Rathore</p>
+      </div>
+    </footer>
   </body>
 
   <script>
     const apiKey = "f91184191a2a1f61ada2c10665d693e5";
     const apiURL =
       "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const aqiURL = "http://api.openweathermap.org/data/2.5/air_pollution?";
 
     const searchBox = document.querySelector(".search input");
     const searchBtn = document.querySelector(".search button");
@@ -66,8 +80,11 @@
           Math.round(data.main.temp) + "°C";
         document.querySelector(".humidity").innerHTML =
           data.main.humidity + "%";
-        document.querySelector(".wind").innerHTML = Math.round(data.wind.speed * 3.6) + "Km/h";
+        document.querySelector(".wind").innerHTML =
+          Math.round(data.wind.speed * 3.6) + "Km/h";
         document.querySelector(".type").innerHTML = data.weather[0].main;
+
+        checkaqi(data.coord.lat, data.coord.lon);
 
         if (data.weather[0].main == "Clouds") {
           weatherIcon.src = "images/clouds.png";
@@ -90,6 +107,15 @@
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
       }
+    }
+
+    async function checkaqi(lat, lon) {
+      const response = await fetch(aqiURL + `lat=${lat}` + `&lon=${lon}` + `&appid=${apiKey}`);
+      const data = await response.json();
+      const aqi = data.list[0].main.aqi
+      const aqiLabel = ["Good", "Fair", "Moderate", "Poor", "Very Poor"]
+      document.querySelector(".aqi").innerHTML = `${aqi} + (${aqiLabel[aqi]})`;
+
     }
 
     searchBtn.addEventListener("click", () => {
